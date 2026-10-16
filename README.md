@@ -1,4 +1,4 @@
-# HUST SOFT-ENGINEERING 校园失物招领与线索匹配平台
+# HUST SOFTWARE-ENGINEERING 校园失物招领与线索匹配平台
 
 **软件设计文档 SD V1.2 · 项目仓库说明**
 
@@ -23,6 +23,11 @@
 
 ```text
 software-engineering/
+├── docs			    # 文件和文档
+├── env                             # 小程序有关内容
+├── lib				    # 库
+├── src				    # 代码
+├── test			    # 测试
 ├── README.md                       # 本文件
 ……
 ```
@@ -57,7 +62,6 @@ python evidence/生成与检查.py
 - SQL 局部约束
 - JSON 与构造 MR-1/双记录/收敛/竞态/QM 组合参考模型
 - 历史能力/来源/错误枚举一致性
-
 
 ### 3.3 数据库设计验证（待执行）
 
