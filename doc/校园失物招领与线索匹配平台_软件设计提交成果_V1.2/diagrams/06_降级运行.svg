@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 570" role="img" aria-labelledby="title">
+<title id="title">图6 依赖故障下的运行形态</title>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#53647b"/></marker></defs>
+<rect width="1000" height="570" fill="white"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#18283d">
+<text x="30" y="36" font-size="22" font-weight="bold">图6 依赖故障下的运行形态</text>
+<path d="M250 130 L370 130" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="310.0" y="121.0" text-anchor="middle" font-size="13">同源请求</text>
+<path d="M510 200 L510 315" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="516.0" y="248.5" font-size="13">当前事务</text>
+<path d="M655 372 L735 372" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="695.0" y="363.0" text-anchor="middle" font-size="13">恢复</text>
+<path d="M735 142 L655 142" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="695.0" y="133.0" text-anchor="middle" font-size="13">状态反馈</text>
+<rect x="30" y="85" width="220" height="90" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="140.0" y="112" text-anchor="middle" font-size="17" font-weight="bold">用户浏览器</text>
+<text x="140.0" y="136" text-anchor="middle" font-size="14" font-weight="normal">提示延迟 / 失败 / 维护</text>
+<rect x="370" y="85" width="285" height="115" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="512.5" y="112" text-anchor="middle" font-size="17" font-weight="bold">Web 同步路径仍守卫</text>
+<text x="512.5" y="136" text-anchor="middle" font-size="14" font-weight="normal">鉴权 / 人工检索 / 文本写入</text>
+<text x="512.5" y="160" text-anchor="middle" font-size="14" font-weight="normal">到期先同步收敛再做业务</text>
+<rect x="370" y="315" width="285" height="115" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="512.5" y="342" text-anchor="middle" font-size="17" font-weight="bold">PostgreSQL 必须可用</text>
+<text x="512.5" y="366" text-anchor="middle" font-size="14" font-weight="normal">事务 / 幂等 / 审计 / Outbox</text>
+<text x="512.5" y="390" text-anchor="middle" font-size="14" font-weight="normal">故障即关闭业务入口</text>
+<rect x="735" y="85" width="230" height="115" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="850.0" y="112" text-anchor="middle" font-size="17" font-weight="bold">Worker全部停机</text>
+<text x="850.0" y="136" text-anchor="middle" font-size="14" font-weight="normal">候选与通知延迟</text>
+<text x="850.0" y="160" text-anchor="middle" font-size="14" font-weight="normal">不丢已提交事件</text>
+<rect x="30" y="315" width="250" height="115" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="155.0" y="342" text-anchor="middle" font-size="17" font-weight="bold">图片或学校身份故障</text>
+<text x="155.0" y="366" text-anchor="middle" font-size="14" font-weight="normal">无图文本 / 有效会话可用</text>
+<text x="155.0" y="390" text-anchor="middle" font-size="14" font-weight="normal">失败组件对应功能503</text>
+<rect x="735" y="315" width="230" height="115" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="850.0" y="342" text-anchor="middle" font-size="17" font-weight="bold">恢复与屏障</text>
+<text x="850.0" y="366" text-anchor="middle" font-size="14" font-weight="normal">MISSED / 一次补偿</text>
+<text x="850.0" y="390" text-anchor="middle" font-size="14" font-weight="normal">删除清单核对后放行</text>
+<text x="30" y="523" font-size="14">RUN_SYNC_ONLY：worker停机不豁免60秒任务/24小时清理SLA；故障原样计入监测。</text>
+<text x="30" y="546" font-size="14">数据库/鉴权失效或恢复屏障未解除时，业务入口关闭；质量SEARCH_FIRST另行管理。</text>
+</g></svg>

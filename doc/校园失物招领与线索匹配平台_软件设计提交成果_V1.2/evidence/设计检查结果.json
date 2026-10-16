@@ -1,0 +1,3809 @@
+{
+  "time": "2026-10-14T20:19:12.975938+08:00",
+  "kind": "文档结构与构造参考模型检查，非平台实测",
+  "passed": 665,
+  "total": 665,
+  "results": [
+    {
+      "name": "追溯 F-01",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-02",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-03",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-04",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-05",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-06",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-07",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-08",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-09",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-10",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-11",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-12",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-13",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-14",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-15",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-16",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-17",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-18",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-19",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-20",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-01",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-02",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-03",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-04",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-05",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-06",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-07",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-08",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-09",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-10",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-13a",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-13b",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-13c",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-19a",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-19b",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 F-19c",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-09a",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-09b",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "追溯 N-09c",
+      "passed": true,
+      "detail": "第13节独立行"
+    },
+    {
+      "name": "设计元素 M01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 M09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D11",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D12",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D13",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D14",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D15",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D16",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D17",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D18",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D19",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D20",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D21",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D22",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 D23",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API00",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API11",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API12",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API13",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API14",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API15",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API16",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API17",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API18",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API19",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API20",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API21",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API22",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API23",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API24",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API25",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API26",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API27",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API28",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API29",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API30",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API31",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API32",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API33",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API34",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API35",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API36",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API37",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API38",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API39",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 API40",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT11",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 INT12",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 P09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI00",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 UI10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 ADR10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV11",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV12",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV13",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV14",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV15",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV16",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV17",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV18",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV19",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV20",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV21",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV22",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV23",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV24",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 DV25",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E01",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E02",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E03",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E04",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E05",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E06",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E07",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E08",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E09",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E10",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E11",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E12",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E13",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E14",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "设计元素 E15",
+      "passed": true,
+      "detail": "正文存在规范编号；不等于实现完成"
+    },
+    {
+      "name": "章节完整",
+      "passed": true,
+      "detail": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "name": "图 图1 系统架构与依赖方向",
+      "passed": true,
+      "detail": "diagrams/01_架构.svg"
+    },
+    {
+      "name": "图 图2 单机试点部署与恢复边界",
+      "passed": true,
+      "detail": "diagrams/02_部署.svg"
+    },
+    {
+      "name": "图 图6 依赖故障下的运行形态",
+      "passed": true,
+      "detail": "diagrams/06_降级运行.svg"
+    },
+    {
+      "name": "图 图3 核心实体与关联",
+      "passed": true,
+      "detail": "diagrams/03_数据关系.svg"
+    },
+    {
+      "name": "图 图4 选定与双方确认时序",
+      "passed": true,
+      "detail": "diagrams/04_交接时序.svg"
+    },
+    {
+      "name": "图 图5 记录状态与期限守卫",
+      "passed": true,
+      "detail": "diagrams/05_状态.svg"
+    },
+    {
+      "name": "图 图7 FOUND编辑与候选读取的竞态",
+      "passed": true,
+      "detail": "diagrams/07_候选竞态.svg"
+    },
+    {
+      "name": "JSON样例可解析",
+      "passed": true,
+      "detail": "发布输入与确认响应"
+    },
+    {
+      "name": "JSON最终双v6",
+      "passed": true,
+      "detail": "与第7.1/DV03一致"
+    },
+    {
+      "name": "基线逐字一致",
+      "passed": true,
+      "detail": "源存在时重算；独立包见来源指纹"
+    },
+    {
+      "name": "SQL约束 record_id uuid PRIMARY KEY",
+      "passed": true,
+      "detail": "文本约束检查，未在PostgreSQL执行"
+    },
+    {
+      "name": "SQL约束 uq_active_claim_pair",
+      "passed": true,
+      "detail": "文本约束检查，未在PostgreSQL执行"
+    },
+    {
+      "name": "SQL约束 DEFERRABLE INITIALLY DEFERRED",
+      "passed": true,
+      "detail": "文本约束检查，未在PostgreSQL执行"
+    },
+    {
+      "name": "SQL约束 UNIQUE(event_id,recipient_id)",
+      "passed": true,
+      "detail": "文本约束检查，未在PostgreSQL执行"
+    },
+    {
+      "name": "SQL约束 PRIMARY KEY(user_id,request_key)",
+      "passed": true,
+      "detail": "文本约束检查，未在PostgreSQL执行"
+    },
+    {
+      "name": "MR-1构造 S-01",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          15,
+          25,
+          25,
+          100
+        ],
+        "actual": [
+          35,
+          15,
+          25,
+          25,
+          100
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-02",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          15,
+          25,
+          10,
+          85
+        ],
+        "actual": [
+          35,
+          15,
+          25,
+          10,
+          85
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-03",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          0,
+          25,
+          0,
+          60
+        ],
+        "actual": [
+          35,
+          0,
+          25,
+          0,
+          60
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-04",
+      "passed": true,
+      "detail": {
+        "expected": null,
+        "actual": null,
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 S-05",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          15,
+          0,
+          0,
+          50
+        ],
+        "actual": [
+          35,
+          15,
+          0,
+          0,
+          50
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-06",
+      "passed": true,
+      "detail": {
+        "expected": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 S-07",
+      "passed": true,
+      "detail": {
+        "expected": null,
+        "actual": null,
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 S-08_72h",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          15,
+          25,
+          10,
+          85
+        ],
+        "actual": [
+          35,
+          15,
+          25,
+          10,
+          85
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-08_72h加1秒",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          15,
+          25,
+          0,
+          75
+        ],
+        "actual": [
+          35,
+          15,
+          25,
+          0,
+          75
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 S-09",
+      "passed": true,
+      "detail": {
+        "expected": [
+          35,
+          0,
+          0,
+          0,
+          35
+        ],
+        "actual": [
+          35,
+          0,
+          0,
+          0,
+          35
+        ],
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 S-10",
+      "passed": true,
+      "detail": {
+        "expected": [
+          0,
+          15,
+          0,
+          25,
+          40
+        ],
+        "actual": [
+          0,
+          15,
+          0,
+          25,
+          40
+        ],
+        "candidate": true
+      }
+    },
+    {
+      "name": "MR-1构造 异校",
+      "passed": true,
+      "detail": {
+        "expected": null,
+        "actual": null,
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 本人",
+      "passed": true,
+      "detail": {
+        "expected": null,
+        "actual": null,
+        "candidate": false
+      }
+    },
+    {
+      "name": "MR-1构造 冻结",
+      "passed": true,
+      "detail": {
+        "expected": null,
+        "actual": null,
+        "candidate": false
+      }
+    },
+    {
+      "name": "双记录参考模型旧版拒绝",
+      "passed": true,
+      "detail": [
+        5,
+        "RESERVED",
+        "RESERVED",
+        "SELECTED"
+      ]
+    },
+    {
+      "name": "双记录参考模型完成",
+      "passed": true,
+      "detail": {
+        "version": 6,
+        "found": "RETURNED",
+        "lost": "RETURNED",
+        "claim": "COMPLETED"
+      }
+    },
+    {
+      "name": "双记录参考模型重复不递增",
+      "passed": true,
+      "detail": "同键结果投影不执行第二次动作；不是HTTP实测"
+    },
+    {
+      "name": "原子接口 API00",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API00",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API00",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API01",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API01",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API01",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API02",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API02",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API02",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API03",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API03",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API03",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API04",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API04",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API04",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API05",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API05",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API05",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API06",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API06",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API06",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API07",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API07",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API07",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API08",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API08",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API08",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API09",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API09",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API09",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API10",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API10",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API10",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API11",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API11",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API11",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API12",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API12",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API12",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API13",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API13",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API13",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API14",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API14",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API14",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API15",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API15",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API15",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API16",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API16",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API16",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API17",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API17",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API17",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API18",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API18",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API18",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API19",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API19",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API19",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API20",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API20",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API20",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API21",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API21",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API21",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API22",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API22",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API22",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API23",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API23",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API23",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API24",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API24",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API24",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API25",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API25",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API25",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API26",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API26",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API26",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API27",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API27",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API27",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API28",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API28",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API28",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API29",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API29",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API29",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API30",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API30",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API30",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API31",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API31",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API31",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API32",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API32",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API32",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API33",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API33",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API33",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API34",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API34",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API34",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API35",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API35",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API35",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API36",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API36",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API36",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API37",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API37",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API37",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API38",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API38",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API38",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API39",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API39",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API39",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "原子接口 API40",
+      "passed": true,
+      "detail": "一ID一方法一路径"
+    },
+    {
+      "name": "接口限制 API40",
+      "passed": true,
+      "detail": "逐行预算/并发/窗口/频控与JSON一致"
+    },
+    {
+      "name": "接口契约同步 API40",
+      "passed": true,
+      "detail": "文档与机器契约字段同步"
+    },
+    {
+      "name": "41接口连续唯一",
+      "passed": true,
+      "detail": "0—40，无合并/重复端点"
+    },
+    {
+      "name": "规则独立追溯 B-01",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-02",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-03",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-04",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-05",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-06",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-07",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-08",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-09",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 B-10",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 MR-1",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 HP-1",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "规则独立追溯 NT-1",
+      "passed": true,
+      "detail": "F/N、设计、数据接口、验证四向映射"
+    },
+    {
+      "name": "五层内部结构 M01",
+      "passed": true,
+      "detail": "identity"
+    },
+    {
+      "name": "五层内部结构 M02",
+      "passed": true,
+      "detail": "records"
+    },
+    {
+      "name": "五层内部结构 M03",
+      "passed": true,
+      "detail": "discovery"
+    },
+    {
+      "name": "五层内部结构 M04",
+      "passed": true,
+      "detail": "claims"
+    },
+    {
+      "name": "五层内部结构 M05",
+      "passed": true,
+      "detail": "governance"
+    },
+    {
+      "name": "五层内部结构 M06",
+      "passed": true,
+      "detail": "lifecycle"
+    },
+    {
+      "name": "五层内部结构 M07",
+      "passed": true,
+      "detail": "jobs_audit"
+    },
+    {
+      "name": "五层内部结构 M08",
+      "passed": true,
+      "detail": "media"
+    },
+    {
+      "name": "五层内部结构 M09",
+      "passed": true,
+      "detail": "auxiliary"
+    },
+    {
+      "name": "D01约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D02约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D03约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D04约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D05约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D06约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D07约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D08约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D09约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D10约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D11约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D12约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D13约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D14约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D15约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D16约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D17约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D18约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D19约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D20约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D21约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D22约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "D23约束执行层",
+      "passed": true,
+      "detail": "数据库表达式+服务守卫+验证"
+    },
+    {
+      "name": "局部约束 申请局部",
+      "passed": true,
+      "detail": "文本检查；PostgreSQL未执行"
+    },
+    {
+      "name": "局部约束 SELECTED局部",
+      "passed": true,
+      "detail": "文本检查；PostgreSQL未执行"
+    },
+    {
+      "name": "局部约束 记录局部",
+      "passed": true,
+      "detail": "文本检查；PostgreSQL未执行"
+    },
+    {
+      "name": "局部约束 OLD保留",
+      "passed": true,
+      "detail": "文本检查；PostgreSQL未执行"
+    },
+    {
+      "name": "局部约束 身份变更索引补查",
+      "passed": true,
+      "detail": "文本检查；PostgreSQL未执行"
+    },
+    {
+      "name": "扩展约束 bytes BETWEEN 1 AND 2097152",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 width BETWEEN 1 AND 4096",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 height BETWEEN 1 AND 4096",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 num_nonnulls(record_content_id,claim_content_id,case_content_id)=1",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 PRIMARY KEY(job_id,slot)",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 UNIQUE(event_id,handler)",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 reviewer_deadline_at<=LEAST",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 uq_one_redrive",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 ct_rule_immutable",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "扩展约束 score BETWEEN 40 AND 100",
+      "passed": true,
+      "detail": "CHECK/UQ/TG表达式存在；未声称SQL实测"
+    },
+    {
+      "name": "Q01可量化",
+      "passed": true,
+      "detail": "第9.1节目标/钩子/失败处理"
+    },
+    {
+      "name": "Q02可量化",
+      "passed": true,
+      "detail": "第9.1节目标/钩子/失败处理"
+    },
+    {
+      "name": "Q03可量化",
+      "passed": true,
+      "detail": "第9.1节目标/钩子/失败处理"
+    },
+    {
+      "name": "OP01检查钩子",
+      "passed": true,
+      "detail": "技术预算有对应DV"
+    },
+    {
+      "name": "OP02检查钩子",
+      "passed": true,
+      "detail": "技术预算有对应DV"
+    },
+    {
+      "name": "OP03检查钩子",
+      "passed": true,
+      "detail": "技术预算有对应DV"
+    },
+    {
+      "name": "OP04检查钩子",
+      "passed": true,
+      "detail": "技术预算有对应DV"
+    },
+    {
+      "name": "候选落库边界 0",
+      "passed": true,
+      "detail": {
+        "computedRange": "0—100",
+        "stored": false
+      }
+    },
+    {
+      "name": "候选落库边界 35",
+      "passed": true,
+      "detail": {
+        "computedRange": "0—100",
+        "stored": false
+      }
+    },
+    {
+      "name": "候选落库边界 39",
+      "passed": true,
+      "detail": {
+        "computedRange": "0—100",
+        "stored": false
+      }
+    },
+    {
+      "name": "候选落库边界 40",
+      "passed": true,
+      "detail": {
+        "computedRange": "0—100",
+        "stored": true
+      }
+    },
+    {
+      "name": "候选落库边界 100",
+      "passed": true,
+      "detail": {
+        "computedRange": "0—100",
+        "stored": true
+      }
+    },
+    {
+      "name": "S提交B分支 OK",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        409
+      ]
+    },
+    {
+      "name": "S提交B分支 VERSION",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        409
+      ]
+    },
+    {
+      "name": "S提交B分支 VALIDATION",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        400
+      ]
+    },
+    {
+      "name": "S提交B分支 UNAUTHENTICATED",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        401
+      ]
+    },
+    {
+      "name": "S提交B分支 FORBIDDEN",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        403
+      ]
+    },
+    {
+      "name": "S提交B分支 FAILURE",
+      "passed": true,
+      "detail": [
+        "EXPIRED",
+        1,
+        503
+      ]
+    },
+    {
+      "name": "S失败不进B ROLLBACK",
+      "passed": true,
+      "detail": "参考模型：S失败没有业务提交"
+    },
+    {
+      "name": "S失败不进B UNKNOWN",
+      "passed": true,
+      "detail": "参考模型：S失败没有业务提交"
+    },
+    {
+      "name": "S/B间隙达截止",
+      "passed": true,
+      "detail": "实时复检拒绝"
+    },
+    {
+      "name": "候选竞态提交前",
+      "passed": true,
+      "detail": "guard前v8仍有效"
+    },
+    {
+      "name": "候选竞态提交后",
+      "passed": true,
+      "detail": "guard后旧候选剔除"
+    },
+    {
+      "name": "候选竞态当前结果",
+      "passed": true,
+      "detail": "重算v9可见"
+    },
+    {
+      "name": "候选竞态隐藏",
+      "passed": true,
+      "detail": "新版本也不能绕过隐藏"
+    },
+    {
+      "name": "候选竞态旧任务拒提交",
+      "passed": true,
+      "detail": "旧任务无覆盖/通知"
+    },
+    {
+      "name": "DV表连续",
+      "passed": true,
+      "detail": "DV01—DV25完整单一表格"
+    },
+    {
+      "name": "Markdown表列数 1",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 2",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 3",
+      "passed": true,
+      "detail": {
+        "header": 2,
+        "rowCounts": [
+          2
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 4",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 5",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 6",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 7",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 8",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 9",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 10",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 11",
+      "passed": true,
+      "detail": {
+        "header": 2,
+        "rowCounts": [
+          2
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 12",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 13",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 14",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 15",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 16",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 17",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 18",
+      "passed": true,
+      "detail": {
+        "header": 6,
+        "rowCounts": [
+          6
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 19",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 20",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 21",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 22",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 23",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 24",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 25",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 26",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 27",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 28",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 29",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 30",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 31",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 32",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 33",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 34",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 35",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 36",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 37",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 38",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 39",
+      "passed": true,
+      "detail": {
+        "header": 7,
+        "rowCounts": [
+          7
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 40",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 41",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 42",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 43",
+      "passed": true,
+      "detail": {
+        "header": 4,
+        "rowCounts": [
+          4
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 44",
+      "passed": true,
+      "detail": {
+        "header": 5,
+        "rowCounts": [
+          5
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 45",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 46",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 47",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "Markdown表列数 48",
+      "passed": true,
+      "detail": {
+        "header": 3,
+        "rowCounts": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "限制类型 API00",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API00",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API01",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API01",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API02",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API02",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API03",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API03",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API04",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API04",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API05",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API05",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API06",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API06",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API07",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API07",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API08",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API08",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API09",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API09",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API10",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API10",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API11",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API11",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API12",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API12",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API13",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API13",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API14",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API14",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API15",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API15",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API16",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API16",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API17",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API17",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API18",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API18",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API19",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API19",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API20",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API20",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API21",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API21",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API22",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API22",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API23",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API23",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API24",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API24",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API25",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API25",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API26",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API26",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API27",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API27",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API28",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API28",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API29",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API29",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API30",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API30",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API31",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API31",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API32",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API32",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API33",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API33",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API34",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API34",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API35",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API35",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API36",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API36",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API37",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API37",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API38",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API38",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API39",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API39",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "限制类型 API40",
+      "passed": true,
+      "detail": "T秒/C数/I秒/F引用；无混用业务一次受理"
+    },
+    {
+      "name": "频控完整 API40",
+      "passed": true,
+      "detail": "滚动窗口maxCount/windowSeconds/scope"
+    },
+    {
+      "name": "读接口共享RF01",
+      "passed": true,
+      "detail": "全部读共享60/60s"
+    },
+    {
+      "name": "一次受理分离",
+      "passed": true,
+      "detail": "F不承担一次性生命周期上限"
+    },
+    {
+      "name": "锁定分离",
+      "passed": true,
+      "detail": "登录失败计数/15分钟不是F"
+    },
+    {
+      "name": "错误枚举7码完整",
+      "passed": true,
+      "detail": "HTTP/retryable/白名单集中"
+    },
+    {
+      "name": "错误行 ER01",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER02",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER03",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER04",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER05",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER06",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "错误行 ER07",
+      "passed": true,
+      "detail": "文档与枚举同步"
+    },
+    {
+      "name": "历史能力零遗漏零新增",
+      "passed": true,
+      "detail": {
+        "old": 41,
+        "new": 41,
+        "missing": [],
+        "added": []
+      }
+    },
+    {
+      "name": "历史接口完整逐字目录",
+      "passed": true,
+      "detail": "源正文直接摘录，非重新编造"
+    },
+    {
+      "name": "41签名映射完整",
+      "passed": true,
+      "detail": "旧原行→新ID"
+    },
+    {
+      "name": "退出签名细化显式登记",
+      "passed": true,
+      "detail": "未虚称签名无变化，业务即时撤权保留"
+    },
+    {
+      "name": "共享边界 X01",
+      "passed": true,
+      "detail": "app/orchestration"
+    },
+    {
+      "name": "共享边界 X02",
+      "passed": true,
+      "detail": "app/shared/transactions.py"
+    },
+    {
+      "name": "共享边界 X03",
+      "passed": true,
+      "detail": "app/bootstrap.py"
+    },
+    {
+      "name": "共享边界 X04",
+      "passed": true,
+      "detail": "app/ops/readiness.py"
+    },
+    {
+      "name": "共享边界 X05",
+      "passed": true,
+      "detail": "app/shared/contracts.py"
+    },
+    {
+      "name": "首版决策已定",
+      "passed": true,
+      "detail": "非悬置的实现分支"
+    },
+    {
+      "name": "身份确认IDP01",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "身份确认IDP02",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "身份确认IDP03",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "身份确认IDP04",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "身份确认IDP05",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "身份确认IDP06",
+      "passed": true,
+      "detail": "字段/责任/日期/待确认状态"
+    },
+    {
+      "name": "待确认TD01",
+      "passed": true,
+      "detail": "当前选择、责任、截止与CR出口"
+    },
+    {
+      "name": "待确认TD02",
+      "passed": true,
+      "detail": "当前选择、责任、截止与CR出口"
+    },
+    {
+      "name": "待确认TD03",
+      "passed": true,
+      "detail": "当前选择、责任、截止与CR出口"
+    },
+    {
+      "name": "待确认TD04",
+      "passed": true,
+      "detail": "当前选择、责任、截止与CR出口"
+    },
+    {
+      "name": "待确认TD05",
+      "passed": true,
+      "detail": "当前选择、责任、截止与CR出口"
+    },
+    {
+      "name": "规模重评估EV01",
+      "passed": true,
+      "detail": "阈值→评估→验收出口"
+    },
+    {
+      "name": "规模重评估EV02",
+      "passed": true,
+      "detail": "阈值→评估→验收出口"
+    },
+    {
+      "name": "规模重评估EV03",
+      "passed": true,
+      "detail": "阈值→评估→验收出口"
+    },
+    {
+      "name": "规模重评估EV04",
+      "passed": true,
+      "detail": "阈值→评估→验收出口"
+    },
+    {
+      "name": "N-01测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-02测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-03测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-04测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-05测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-06测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-07测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-08测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-09测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "N-10测量四元组",
+      "passed": true,
+      "detail": "方法/采样窗口/判定/重评估"
+    },
+    {
+      "name": "Q01测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "Q02测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "Q03测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "OP01测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "OP02测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "OP03测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "OP04测量四元组",
+      "passed": true,
+      "detail": "补全采样/触发"
+    },
+    {
+      "name": "QM八组合全覆盖",
+      "passed": true,
+      "detail": "模式与任务状态独立"
+    },
+    {
+      "name": "QM通知 QM01",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM02",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM03",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM04",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM05",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM06",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM07",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "QM通知 QM08",
+      "passed": true,
+      "detail": "当前版本成功事件唯一通知守卫"
+    },
+    {
+      "name": "AL01阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "AL02阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "AL03阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "AL04阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "AL05阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "AL06阈值/出口",
+      "passed": true,
+      "detail": "采样、告警与修复判定集中"
+    },
+    {
+      "name": "S-01原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-02原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-03原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-04原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-05原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-06原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-07原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-08原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-09原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "S-10原编号映射",
+      "passed": true,
+      "detail": "只改设计别名，基线/历史保留原件"
+    },
+    {
+      "name": "真实计划空表 易用性验证.csv",
+      "passed": true,
+      "detail": "仅表头，无编造真实用户结果"
+    },
+    {
+      "name": "真实计划空表 无障碍走查.csv",
+      "passed": true,
+      "detail": "仅表头，无编造真实用户结果"
+    },
+    {
+      "name": "SQL未运行边界",
+      "passed": true,
+      "detail": "有psql入口/采样，不伪造SQLSTATE/EXPLAIN"
+    },
+    {
+      "name": "独立包附件 spec/安装设计schema.psql",
+      "passed": true,
+      "detail": "spec/安装设计schema.psql"
+    },
+    {
+      "name": "独立包附件 spec/局部校验采样.sql",
+      "passed": true,
+      "detail": "spec/局部校验采样.sql"
+    },
+    {
+      "name": "独立包附件 sources/任务要求.md",
+      "passed": true,
+      "detail": "sources/任务要求.md"
+    },
+    {
+      "name": "独立包附件 sources/评分标准.md",
+      "passed": true,
+      "detail": "sources/评分标准.md"
+    },
+    {
+      "name": "独立包附件 sources/课程方法原文摘录.md",
+      "passed": true,
+      "detail": "sources/课程方法原文摘录.md"
+    },
+    {
+      "name": "独立包附件 sources/课程摘录索引.json",
+      "passed": true,
+      "detail": "sources/课程摘录索引.json"
+    },
+    {
+      "name": "课程摘录覆盖",
+      "passed": true,
+      "detail": "10个所引页与教案段落；原PDF未随包，不声称独立重算原PDF"
+    },
+    {
+      "name": "F滚动窗边界释放",
+      "passed": true,
+      "detail": "恰60秒的事件出窗口"
+    },
+    {
+      "name": "F窗口内拒绝",
+      "passed": true,
+      "detail": "技术尝试30/60s不得各进程放满"
+    },
+    {
+      "name": "I0不重放",
+      "passed": true,
+      "detail": "敏感读/登录每次执行，不把不重放当频控"
+    },
+    {
+      "name": "I24h截止",
+      "passed": true,
+      "detail": "到期键不取得旧成功正文；新动作仍当前守卫"
+    },
+    {
+      "name": "ER05白名单投影",
+      "passed": true,
+      "detail": {
+        "reasonCode": "VERSION_CHANGED",
+        "foundVersion": 5
+      }
+    },
+    {
+      "name": "AL01边界 17.99",
+      "passed": true,
+      "detail": "NORMAL"
+    },
+    {
+      "name": "AL01边界 18",
+      "passed": true,
+      "detail": "WARN"
+    },
+    {
+      "name": "AL01边界 22",
+      "passed": true,
+      "detail": "CRITICAL"
+    },
+    {
+      "name": "AL01边界 24",
+      "passed": true,
+      "detail": "BREACH"
+    }
+  ]
+}

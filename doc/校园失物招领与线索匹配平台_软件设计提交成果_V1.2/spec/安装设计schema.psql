@@ -1,0 +1,13 @@
+-- Execute only in a disposable isolated PostgreSQL test database.
+-- psql -X -v ON_ERROR_STOP=1 -f spec/安装设计schema.psql > schema-run.log 2>&1
+-- Schema creation is retained for subsequent sampling; exercise fixtures rollback.
+\set ON_ERROR_STOP on
+\set VERBOSITY verbose
+\timing on
+SELECT version() AS database_version;
+\ir 核心约束.sql
+\ir 扩展关键约束.sql
+\ir 准入计数约束.sql
+\ir 数据库约束演练.sql
+\echo Design DDL and synthetic constraint exercises completed by this run.
+-- This script does not prove API/authorization/concurrency/RPO/encryption targets.

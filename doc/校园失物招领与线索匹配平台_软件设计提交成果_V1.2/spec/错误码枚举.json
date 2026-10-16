@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ER01",
+    "code": "VALIDATION",
+    "httpStatus": 400,
+    "retryable": false,
+    "guard": "字段长度/枚举/图格式/地点非法",
+    "detailsWhitelist": "validationRule；fieldErrors仅允许DTO字段名与固定中文错误",
+    "verification": "DV01/04/22"
+  },
+  {
+    "id": "ER02",
+    "code": "UNAUTHENTICATED",
+    "httpStatus": 401,
+    "retryable": false,
+    "guard": "未登录/闲置30分钟/撤销epoch/登录凭据不通过",
+    "detailsWhitelist": "空对象；不暴露账号存在性或身份映射",
+    "verification": "T-01/DV06/22"
+  },
+  {
+    "id": "ER03",
+    "code": "FORBIDDEN",
+    "httpStatus": 403,
+    "retryable": false,
+    "guard": "角色/对象/私密资料/冻结/回避/CSRF不允许",
+    "detailsWhitelist": "reasonCode受控枚举；只在主体有对象身份读取权时给HIDDEN/FROZEN，否则掩蔽为404",
+    "verification": "DV04/06/20/22"
+  },
+  {
+    "id": "ER04",
+    "code": "NOT_FOUND",
+    "httpStatus": 404,
+    "retryable": false,
+    "guard": "对象不存在/已清理/禁止泄露对象存在性",
+    "detailsWhitelist": "空对象，不给原状态/身份/存储key",
+    "verification": "DV06/08/22"
+  },
+  {
+    "id": "ER05",
+    "code": "CONFLICT",
+    "httpStatus": 409,
+    "retryable": false,
+    "guard": "版本/状态冲突，同键异体，期限已到，第二次重派",
+    "detailsWhitelist": "reasonCode；获当前授权才给foundVersion/lostVersion/foundStatus/lostStatus；无竞争者身份",
+    "verification": "DV02/03/11/12/22"
+  },
+  {
+    "id": "ER06",
+    "code": "RATE_LIMITED",
+    "httpStatus": 429,
+    "retryable": true,
+    "guard": "滚动技术窗口、并发准入、业务配额或Demo锁定",
+    "detailsWhitelist": "retryAfterSeconds正整数、rateProfileId或quotaKind；与Retry-After一致",
+    "verification": "T-18/DV19/22"
+  },
+  {
+    "id": "ER07",
+    "code": "TEMPORARY_FAILURE",
+    "httpStatus": 503,
+    "retryable": true,
+    "guard": "依赖/审计/时钟/执行预算失败，commit结果未知",
+    "detailsWhitelist": "stage枚举、reasonCode受控枚举、resultKnown布尔；无连接串/SQL堆栈/正文",
+    "verification": "DV11/19/21/22"
+  }
+]

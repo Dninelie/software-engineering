@@ -1,0 +1,35 @@
+{
+  "version": "SD V1.2",
+  "date": "2026-10-14T12:15:09.098Z",
+  "browserVersion": "155.0.4283.45",
+  "method": "本包浏览器复核.cjs，实际本地无窗口浏览器；全部表列数/目录/SVG边界；修订章节截图",
+  "observed": {
+    "width": 1440,
+    "scroll": 1440,
+    "sectionCount": 17,
+    "tableCount": 48,
+    "svgCount": 7,
+    "missingTocTargets": 0,
+    "tableColumnMismatch": [],
+    "svgTextOutside": [],
+    "mobile": {
+      "width": 360,
+      "scroll": 360
+    }
+  },
+  "structurePassed": true,
+  "visualReviewStatus": "PASS_WITH_STATED_SCOPE",
+  "documentSha256": "2578d7ec9a6bc8558928be6148be729667aea5b6b4ae9d12c4cf7a6f90c9ad1f",
+  "htmlSha256": "b18964f724461ca1db909972dead674257765836948849ff2b9df74d2e160933",
+  "scope": "仅设计文档阅读版/图表，不是N-04/N-05/N-08软件验收，也未全页打印PDF",
+  "visualInspected": [
+    "共享协调与启动入口",
+    "统一错误枚举",
+    "T/C/I/F字段与RF表",
+    "QM八组合表",
+    "真实试用/无障碍计划",
+    "AL告警与恢复出口",
+    "360px首页"
+  ],
+  "result": "目录/全部表列数/7张SVG边界检查通过，1440/360px无页面横向溢出；所列截图抽查可读"
+}

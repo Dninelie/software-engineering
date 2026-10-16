@@ -1,0 +1,21 @@
+{
+  "status": "NOT_RUN",
+  "reason": "当前交付为设计文档；未获得真实PostgreSQL迁移/采样执行输出",
+  "requiredArtifacts": [
+    "databaseVersion",
+    "schemaHash",
+    "fixtureRows",
+    "SQLSTATE",
+    "planJson",
+    "elapsedMs"
+  ],
+  "entryPoints": [
+    "spec/安装设计schema.psql",
+    "spec/局部校验采样.sql"
+  ],
+  "notEquivalentTo": [
+    "真实平台集成验收",
+    "N-01压测",
+    "N-02恢复演练"
+  ]
+}

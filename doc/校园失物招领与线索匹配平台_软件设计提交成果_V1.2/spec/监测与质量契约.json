@@ -1,0 +1,122 @@
+{
+  "qualityModes": [
+    "NORMAL",
+    "SEARCH_FIRST"
+  ],
+  "taskStates": [
+    "UPDATING",
+    "READY",
+    "FAILED",
+    "STALE"
+  ],
+  "alerts": [
+    {
+      "id": "AL01",
+      "metric": "逻辑撤权期限起算至物理完成的最老未完成年龄",
+      "threshold": "≥18h告警；≥22h紧急；≥24h SLA违约",
+      "sample": "每分钟；逻辑到期/注销仍即刻撤权",
+      "resolution": "运维负责人（待指定）按INTENT删对象/关联/映射；3次分钟检查积压最老<1h且逾24h对象0，保留真实违约记录"
+    },
+    {
+      "id": "AL02",
+      "metric": "敏感访问/管理动作AuditWriter持久化失败次数",
+      "threshold": "任意1次立即紧急",
+      "sample": "每事件；禁止未审计的私密字节/管理提交",
+      "resolution": "负责人修复存储；连续3次间隔60s审计探针成功且一次授权读/管理动作审计完整才恢复；不补造失败时未发生的成功访问"
+    },
+    {
+      "id": "AL03",
+      "metric": "当前时间减最新有效快照时间；校验和是否有效",
+      "threshold": ">20h预警；>24h RPO预算违约/紧急；校验和错立即紧急",
+      "sample": "每分钟及每次备份完成",
+      "resolution": "补一份可校验一致性快照使年龄≤24h；恢复样例+删除清单覆盖通过才解除；历史RPO违约照记"
+    },
+    {
+      "id": "AL04",
+      "metric": "未处理READY事件最老年龄；正常任务提交到可见",
+      "threshold": "≥30s连续两次10秒采样预警；>60s按正常态记违约/紧急",
+      "sample": "每10s；故障态独立记实际延迟/错过槽",
+      "resolution": "恢复worker/监督；连续3次10s检查READY年龄<30s，FAILED队列逐项有处理人/重派决定且恢复一次补偿核对通过；不删除失败队列冒充修复"
+    },
+    {
+      "id": "AL05",
+      "metric": "追加INTENT/APPLIED失败与备份清单覆盖",
+      "threshold": "任意1次失败立即紧急；清单不覆盖任一待恢复备份则禁止放行",
+      "sample": "每写清单/每恢复；逻辑撤权仍继续",
+      "resolution": "独立介质连续3次写读校验成功，INTENT重放/最新覆盖及已删哨兵通过，才解除屏障；APPLIED不能先于物理删除"
+    },
+    {
+      "id": "AL06",
+      "metric": "服务Clock与受信同步源偏差绝对值",
+      "threshold": ">1s预警；>5s紧急暂停新交接写入",
+      "sample": "每分钟；不改已存deadline",
+      "resolution": "连续3次分钟样本偏差≤1s，deadline边界回归通过才恢复；暂停期503 ER07/TIME_UNTRUSTED"
+    }
+  ],
+  "qualityCombinations": [
+    {
+      "id": "QM01",
+      "qualityMode": "NORMAL",
+      "taskState": "READY",
+      "message": "READY_EMPTY或READY_CANDIDATES",
+      "emitMatchUpdated": true,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM02",
+      "qualityMode": "NORMAL",
+      "taskState": "UPDATING",
+      "message": "候选更新中",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM03",
+      "qualityMode": "NORMAL",
+      "taskState": "FAILED",
+      "message": "候选更新失败",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM04",
+      "qualityMode": "NORMAL",
+      "taskState": "STALE",
+      "message": "旧候选已失效，正在重算",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM05",
+      "qualityMode": "SEARCH_FIRST",
+      "taskState": "READY",
+      "message": "READY_EMPTY或READY_CANDIDATES",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM06",
+      "qualityMode": "SEARCH_FIRST",
+      "taskState": "UPDATING",
+      "message": "候选更新中",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM07",
+      "qualityMode": "SEARCH_FIRST",
+      "taskState": "FAILED",
+      "message": "候选更新失败",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    },
+    {
+      "id": "QM08",
+      "qualityMode": "SEARCH_FIRST",
+      "taskState": "STALE",
+      "message": "旧候选已失效，正在重算",
+      "emitMatchUpdated": false,
+      "otherNotificationsContinue": true
+    }
+  ]
+}

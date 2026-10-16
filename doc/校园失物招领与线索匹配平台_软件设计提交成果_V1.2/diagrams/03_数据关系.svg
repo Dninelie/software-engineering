@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title">
+<title id="title">图3 核心实体与关联</title>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#53647b"/></marker></defs>
+<rect width="1000" height="600" fill="white"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#18283d">
+<text x="30" y="36" font-size="22" font-weight="bold">图3 核心实体与关联</text>
+<path d="M245 127 L340 127" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="292.5" y="118.0" text-anchor="middle" font-size="13">1:N</text>
+<path d="M615 127 L700 127" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="657.5" y="118.0" text-anchor="middle" font-size="13">1:0..1</text>
+<path d="M477 170 L477 240" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="483.0" y="196.0" font-size="13">两侧各1:N</text>
+<path d="M615 282 L700 282" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="657.5" y="273.0" text-anchor="middle" font-size="13">1:0..1</text>
+<path d="M340 282 L245 282" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="292.5" y="273.0" text-anchor="middle" font-size="13">1:2</text>
+<path d="M477 325 L477 395" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="483.0" y="351.0" font-size="13">1:N</text>
+<path d="M615 437 L700 437" stroke="#53647b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="657.5" y="428.0" text-anchor="middle" font-size="13">1:N</text>
+<rect x="30" y="85" width="215" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="137.5" y="112" text-anchor="middle" font-size="17" font-weight="bold">D01 用户</text>
+<text x="137.5" y="136" text-anchor="middle" font-size="14" font-weight="normal">发布者 / 申请人</text>
+<rect x="340" y="85" width="275" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="477.5" y="112" text-anchor="middle" font-size="17" font-weight="bold">D03 记录头</text>
+<text x="477.5" y="136" text-anchor="middle" font-size="14" font-weight="normal">LOST或FOUND / 状态 / 版本</text>
+<rect x="700" y="85" width="265" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="832.5" y="112" text-anchor="middle" font-size="17" font-weight="bold">D04 记录内容</text>
+<text x="832.5" y="136" text-anchor="middle" font-size="14" font-weight="normal">公开字段 + 私密提示</text>
+<rect x="340" y="240" width="275" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="477.5" y="267" text-anchor="middle" font-size="17" font-weight="bold">D05 申请</text>
+<text x="477.5" y="291" text-anchor="middle" font-size="14" font-weight="normal">每笔关联一FOUND一LOST</text>
+<rect x="700" y="240" width="265" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="832.5" y="267" text-anchor="middle" font-size="17" font-weight="bold">D06 申请内容</text>
+<text x="832.5" y="291" text-anchor="middle" font-size="14" font-weight="normal">证据 / 地点 / 联系 / 确认</text>
+<rect x="30" y="240" width="215" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="137.5" y="267" text-anchor="middle" font-size="17" font-weight="bold">D07 活动占用</text>
+<text x="137.5" y="291" text-anchor="middle" font-size="14" font-weight="normal">record_id主键唯一</text>
+<rect x="340" y="395" width="275" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="477.5" y="422" text-anchor="middle" font-size="17" font-weight="bold">D11 案件</text>
+<text x="477.5" y="446" text-anchor="middle" font-size="14" font-weight="normal">举报 / 申诉 / 回避期限</text>
+<rect x="700" y="395" width="265" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="832.5" y="422" text-anchor="middle" font-size="17" font-weight="bold">D12 回执与正文</text>
+<text x="832.5" y="446" text-anchor="middle" font-size="14" font-weight="normal">归并仍保留各回执</text>
+<rect x="30" y="395" width="215" height="85" rx="7" fill="#f2f6fa" stroke="#8192a9"/>
+<text x="137.5" y="422" text-anchor="middle" font-size="17" font-weight="bold">D20 收藏</text>
+<text x="137.5" y="446" text-anchor="middle" font-size="14" font-weight="normal">user ↔ record</text>
+<text x="137.5" y="470" text-anchor="middle" font-size="14" font-weight="normal">无正文快照</text>
+<text x="30" y="553" font-size="14">箭头和数字表示关联，不表示模块调用；D07确保同LOST/FOUND不能参与多个活动交接。</text>
+<text x="30" y="576" font-size="14">其余图片、候选、事件、通知、审计与删除清单字段见D08—D23。</text>
+</g></svg>
