@@ -1,0 +1,36 @@
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+*.local
+application-local.yml
+application-secret.yml
+project.private.config.json
+
+# Dependencies and builds
+node_modules/
+target/
+dist/
+coverage/
+*.tsbuildinfo
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Runtime data
+runtime/
+uploads/
+logs/
+*.log
+
+# Editor / OS
+.idea/
+.DS_Store
+Thumbs.db
+
+# Lockfiles, migration files and project.config.json should be tracked after initialization.

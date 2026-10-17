@@ -1,0 +1,6692 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "校园失物招领与 AI 线索匹配平台",
+    "version": "1.1.0",
+    "description": "设计合同，非已实现服务。A 是唯一小程序维护者；B 业务、C 智能、D 平台。额外业务规则见 docs/12-integration-contracts.md。"
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "同一后端 API 前缀"
+    }
+  ],
+  "tags": [
+    {
+      "name": "business",
+      "description": "B"
+    },
+    {
+      "name": "intelligence",
+      "description": "C"
+    },
+    {
+      "name": "platform",
+      "description": "D"
+    }
+  ],
+  "paths": {
+    "/auth/wechat-login": {
+      "post": {
+        "operationId": "post_auth_wechat_login",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "public",
+        "summary": "微信登录",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WechatLoginRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "operationId": "post_auth_logout",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "current-or-already-revoked-session",
+        "summary": "撤销当前会话",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AckResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "当前有效会话撤销；同一已撤销 token 可幂等返回成功。未知或缺失 token 返回未登录，不接受伪造退出身份。"
+      }
+    },
+    "/me": {
+      "get": {
+        "operationId": "get_me",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "authenticated",
+        "summary": "本人资料",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_me",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "authenticated",
+        "summary": "修改本人资料",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "operationId": "get_categories",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "public",
+        "summary": "启用分类",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/locations": {
+      "get": {
+        "operationId": "get_locations",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "public",
+        "summary": "启用校园地点",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/files": {
+      "post": {
+        "operationId": "post_files",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "authenticated",
+        "summary": "上传文件",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUploadedResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "enum": [
+                      "POST_IMAGE",
+                      "CLUE_IMAGE",
+                      "CLAIM_PROOF",
+                      "AVATAR"
+                    ]
+                  }
+                },
+                "required": [
+                  "file",
+                  "purpose"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/files/{id}/content": {
+      "get": {
+        "operationId": "get_files_id_content",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "public-post-image-or-signed-grant",
+        "summary": "公开图片或有效访问许可",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                },
+                "description": "公开与私密内容均每次校验可见性，第一版不缓存。"
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "nosniff"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "expires",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "nonce",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "purpose",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DISPLAY"
+              ]
+            }
+          },
+          {
+            "name": "signature",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          }
+        ],
+        "description": "公开读取限当前可见的帖子图片或已公开头像；私密图、本人历史图和管理员物品审核图需要短期签名。每次校验账号、关联和许可；管理员不因此获得证明权限。"
+      }
+    },
+    "/files/{id}/access-grants": {
+      "post": {
+        "operationId": "post_files_id_access_grants",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "file-participant",
+        "summary": "签发本人有权读取的短期图片许可",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileGrantResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      }
+    },
+    "/posts": {
+      "post": {
+        "operationId": "post_posts",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "发布寻物或招领",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostSavedResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePost"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "get_posts",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "public",
+        "summary": "公开信息列表",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostCardPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LOST",
+                "FOUND"
+              ]
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ]
+      }
+    },
+    "/posts/{id}": {
+      "get": {
+        "operationId": "get_posts_id",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "public-visible-open-processing-or-owner-history",
+        "summary": "正常公开详情或本人历史",
+        "security": [
+          {},
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDetailResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "put_posts_id",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "post-owner",
+        "summary": "本人编辑可编辑内容",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostSavedResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePost"
+              }
+            }
+          }
+        },
+        "description": "仅 owner、OPEN、VISIBLE；拒绝 type/ownerId 等不可编辑字段，expectedVersion 参与更新；事务保存信息和匹配任务。 LOST 关联已接受申请时，即使 OPEN 也不可编辑。"
+      }
+    },
+    "/me/posts": {
+      "get": {
+        "operationId": "get_me_posts",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "我的发布",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostDetailPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LOST",
+                "FOUND"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/PostStatus"
+            }
+          }
+        ]
+      }
+    },
+    "/posts/{id}/close": {
+      "post": {
+        "operationId": "post_posts_id_close",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "post-owner",
+        "summary": "关闭信息及相关流程",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostStateResultResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClosePost"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{id}/resolve": {
+      "post": {
+        "operationId": "post_posts_id_resolve",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "post-owner",
+        "summary": "手动标记解决",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostStateResultResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResolvePost"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai/extraction-jobs": {
+      "post": {
+        "operationId": "post_ai_extraction_jobs",
+        "tags": [
+          "intelligence"
+        ],
+        "x-owner": "C",
+        "x-access": "authenticated",
+        "summary": "图文特征提取入队",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "后台任务已接受",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExtractionRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai/extraction-jobs/{id}": {
+      "get": {
+        "operationId": "get_ai_extraction_jobs_id",
+        "tags": [
+          "intelligence"
+        ],
+        "x-owner": "C",
+        "x-access": "extraction-job-owner",
+        "summary": "本人查询提取任务",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExtractionJobResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      }
+    },
+    "/posts/{id}/match-jobs": {
+      "post": {
+        "operationId": "post_posts_id_match_jobs",
+        "tags": [
+          "intelligence"
+        ],
+        "x-owner": "C",
+        "x-access": "post-owner",
+        "summary": "本人请求重新匹配",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "后台任务已接受",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAcceptedResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/posts/{id}/match-jobs/{jobId}": {
+      "get": {
+        "operationId": "get_posts_id_match_jobs_jobId",
+        "tags": [
+          "intelligence"
+        ],
+        "x-owner": "C",
+        "x-access": "matching-job-owner-target-type",
+        "summary": "本人查询属于该信息的匹配任务",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchJobResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "description": "需同时满足任务本人、类型 REFRESH_MATCHES、targetId 与路径信息一致；不可通过其他任务编号越权读取。"
+      }
+    },
+    "/posts/{id}/matches": {
+      "get": {
+        "operationId": "get_posts_id_matches",
+        "tags": [
+          "intelligence"
+        ],
+        "x-owner": "C",
+        "x-access": "public-visible-source-or-owner-history",
+        "summary": "读取当前有效推荐",
+        "security": [
+          {},
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchesResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "description": "公开仅源信息 VISIBLE 且 OPEN/PROCESSING；本人可读历史但已不满足匹配状态时 items=[]，refreshState=SUPERSEDED。不含 jobId、输入或错误栈。每项 mode 单独记录。"
+      }
+    },
+    "/posts/{id}/clues": {
+      "post": {
+        "operationId": "post_posts_id_clues",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "向有效寻物提供线索",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedIdResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClueCreate"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "get_posts_id_clues",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "lost-post-owner",
+        "summary": "发布者查看收到线索",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CluePageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/me/clues": {
+      "get": {
+        "operationId": "get_me_clues",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "本人提交的线索",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CluePageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/posts/{id}/claims": {
+      "post": {
+        "operationId": "post_posts_id_claims",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "向招领申请认领",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimCardResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimCreate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/claims": {
+      "get": {
+        "operationId": "get_me_claims",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "发出或收到的申请",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimCardPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "sent",
+                "received"
+              ]
+            },
+            "required": true
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ClaimStatus"
+            }
+          }
+        ]
+      }
+    },
+    "/claims/{id}": {
+      "get": {
+        "operationId": "get_claims_id",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "claim-participant",
+        "summary": "相关双方的申请详情",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimDetailResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      }
+    },
+    "/claims/{id}/accept": {
+      "post": {
+        "operationId": "post_claims_id_accept",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "found-post-owner",
+        "summary": "拾取者接受申请",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimDetailResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimAccept"
+              }
+            }
+          }
+        },
+        "description": "同时锁 FOUND 与关联 LOST，当前读校验两端均无其他 ACCEPTED。所有信息按 ID 升序，再锁申请。 比较保存的双方内容版本，过时返回 CLAIM_CONTENT_CHANGED。"
+      }
+    },
+    "/claims/{id}/reject": {
+      "post": {
+        "operationId": "post_claims_id_reject",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "found-post-owner",
+        "summary": "拾取者拒绝待处理申请",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimCardResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimAction"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claims/{id}/cancel": {
+      "post": {
+        "operationId": "post_claims_id_cancel",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "pending-applicant-or-accepted-participant",
+        "summary": "申请人撤销或交接双方取消",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimCardResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimAction"
+              }
+            }
+          }
+        },
+        "description": "PENDING 仅申请人撤销；ACCEPTED 任一交接方可取消。记录取消人和原因，释放 FOUND 并重新匹配。先读同一幂等请求结果，之后才判断新动作是否合法。"
+      }
+    },
+    "/claims/{id}/complete": {
+      "post": {
+        "operationId": "post_claims_id_complete",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "found-post-owner",
+        "summary": "拾取者确认实际归还",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimCardResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClaimComplete"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "get": {
+        "operationId": "get_notifications",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "本人站内消息",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "unreadOnly",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    },
+    "/notifications/unread-count": {
+      "get": {
+        "operationId": "get_notifications_unread_count",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "authenticated",
+        "summary": "本人未读消息数",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnreadCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications/{id}/read": {
+      "patch": {
+        "operationId": "patch_notifications_id_read",
+        "tags": [
+          "business"
+        ],
+        "x-owner": "B",
+        "x-access": "notification-recipient",
+        "summary": "收件人标记已读",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AckResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      }
+    },
+    "/reports": {
+      "post": {
+        "operationId": "post_reports",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "authenticated",
+        "summary": "举报信息",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedIdResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportCreate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/auth/login": {
+      "post": {
+        "operationId": "post_admin_auth_login",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "public-admin-login",
+        "summary": "管理员登录",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminLoginRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/posts": {
+      "get": {
+        "operationId": "get_admin_posts",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "管理信息列表",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminPostPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/PostStatus"
+            }
+          },
+          {
+            "name": "moderationStatus",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "VISIBLE",
+                "HIDDEN"
+              ]
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ]
+      }
+    },
+    "/admin/posts/{id}": {
+      "get": {
+        "operationId": "get_admin_posts_id",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "管理信息摘要与详情",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminPostResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/posts/{id}/moderation": {
+      "patch": {
+        "operationId": "patch_admin_posts_id_moderation",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "下架或恢复并处理关联流程",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostStateResultResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModerationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "operationId": "get_admin_users",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "管理用户",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/admin/users/{id}/status": {
+      "patch": {
+        "operationId": "patch_admin_users_id_status",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "限制或恢复账号",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserStatus"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/reports": {
+      "get": {
+        "operationId": "get_admin_reports",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "举报列表",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      }
+    },
+    "/admin/reports/{id}": {
+      "patch": {
+        "operationId": "patch_admin_reports_id",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "处理举报",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportResolve"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/statistics": {
+      "get": {
+        "operationId": "get_admin_statistics",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "平台统计",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatisticsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。"
+      }
+    },
+    "/admin/categories": {
+      "get": {
+        "operationId": "get_admin_categories",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "管理字典列表",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "post_admin_categories",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "新增字典",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryWrite"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/categories/{id}": {
+      "patch": {
+        "operationId": "patch_admin_categories_id",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "编辑或停用字典",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryPatch"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/locations": {
+      "get": {
+        "operationId": "get_admin_locations",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "管理字典列表",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemPageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ]
+      },
+      "post": {
+        "operationId": "post_admin_locations",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "新增字典",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "资源已创建",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryWrite"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/locations/{id}": {
+      "patch": {
+        "operationId": "patch_admin_locations_id",
+        "tags": [
+          "platform"
+        ],
+        "x-owner": "D",
+        "x-access": "admin",
+        "summary": "编辑或停用字典",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "操作成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DictionaryItemResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "统一业务错误；按 HTTP 状态区分参数、身份、权限、冲突、限流或外部故障",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "description": "需要 ADMIN；普通用户即使登录也不得调用。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DictionaryPatch"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "opaque-session-token"
+      }
+    },
+    "schemas": {
+      "JobState": {
+        "type": "string",
+        "enum": [
+          "QUEUED",
+          "RUNNING",
+          "SUCCEEDED",
+          "FAILED",
+          "SUPERSEDED"
+        ]
+      },
+      "PostStatus": {
+        "type": "string",
+        "enum": [
+          "OPEN",
+          "PROCESSING",
+          "RESOLVED",
+          "CLOSED"
+        ]
+      },
+      "ClaimStatus": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "ACCEPTED",
+          "COMPLETED",
+          "REJECTED",
+          "CANCELLED",
+          "ENDED"
+        ]
+      },
+      "Contact": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "WECHAT",
+              "PHONE"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "Features": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "brand": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "nullable": true
+          },
+          "appearance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "color",
+          "brand",
+          "appearance"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "avatarUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "USER",
+              "ADMIN"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "RESTRICTED"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "nickname",
+          "avatarUrl",
+          "role",
+          "status"
+        ]
+      },
+      "Login": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "token",
+          "expiresAt",
+          "user"
+        ]
+      },
+      "WechatLoginRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "code"
+        ]
+      },
+      "AdminLoginRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "ProfileUpdate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "avatarFileId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          }
+        },
+        "required": [],
+        "minProperties": 1
+      },
+      "DictionaryItem": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "area": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "enabled"
+        ]
+      },
+      "DictionaryWrite": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "area": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          }
+        },
+        "required": [
+          "name",
+          "enabled"
+        ]
+      },
+      "DictionaryPatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "area": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          }
+        },
+        "required": [],
+        "minProperties": 1
+      },
+      "PostImage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "fileId",
+          "url",
+          "sortOrder"
+        ]
+      },
+      "FileRef": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "mimeType": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "fileId",
+          "mimeType"
+        ]
+      },
+      "FileUploaded": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "POST_IMAGE",
+              "CLUE_IMAGE",
+              "CLAIM_PROOF",
+              "AVATAR"
+            ]
+          },
+          "mimeType": {
+            "type": "string",
+            "enum": [
+              "image/jpeg",
+              "image/png"
+            ]
+          },
+          "byteSize": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "fileId",
+          "purpose",
+          "mimeType",
+          "byteSize"
+        ]
+      },
+      "FileGrant": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "url",
+          "expiresAt"
+        ]
+      },
+      "CreatePost": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LOST",
+              "FOUND"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 50
+          },
+          "categoryId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "features": {
+            "$ref": "#/components/schemas/Features"
+          },
+          "imageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            },
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "type",
+          "title",
+          "categoryId",
+          "locationId",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "description",
+          "features",
+          "imageIds"
+        ],
+        "x-semantic-validation": [
+          "EXACT: eventAt required, eventDate/timePeriod null",
+          "PERIOD: eventDate and timePeriod required, eventAt null",
+          "DATE: eventDate required, eventAt/timePeriod null",
+          "UNKNOWN: all event fields null",
+          "category/location must be active or an unchanged historical reference allowed by policy"
+        ]
+      },
+      "UpdatePost": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 50
+          },
+          "categoryId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "features": {
+            "$ref": "#/components/schemas/Features"
+          },
+          "imageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            },
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "expectedVersion",
+          "title",
+          "categoryId",
+          "locationId",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "description",
+          "features",
+          "imageIds"
+        ],
+        "x-semantic-validation": [
+          "EXACT: eventAt required, eventDate/timePeriod null",
+          "PERIOD: eventDate and timePeriod required, eventAt null",
+          "DATE: eventDate required, eventAt/timePeriod null",
+          "UNKNOWN: all event fields null",
+          "category/location must be active or an unchanged historical reference allowed by policy"
+        ]
+      },
+      "PostCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LOST",
+              "FOUND"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "categoryName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "locationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PostStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "categoryName",
+          "locationName",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "thumbnailUrl",
+          "status",
+          "createdAt"
+        ]
+      },
+      "PostDetail": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LOST",
+              "FOUND"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "categoryName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "locationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PostStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categoryId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "features": {
+            "$ref": "#/components/schemas/Features"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostImage"
+            },
+            "maxItems": 3
+          },
+          "rowVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "contentVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "publisher": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$",
+                "example": "1001"
+              },
+              "nickname": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "avatarUrl": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000,
+                "nullable": true
+              }
+            },
+            "required": [
+              "id",
+              "nickname",
+              "avatarUrl"
+            ]
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "EDIT",
+                "CLOSE",
+                "RESOLVE",
+                "PROVIDE_CLUE",
+                "CLAIM",
+                "REPORT",
+                "VIEW_MATCHES"
+              ]
+            },
+            "maxItems": 10
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "categoryName",
+          "locationName",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "thumbnailUrl",
+          "status",
+          "createdAt",
+          "categoryId",
+          "locationId",
+          "description",
+          "features",
+          "images",
+          "rowVersion",
+          "contentVersion",
+          "publisher",
+          "allowedActions"
+        ]
+      },
+      "PostSaved": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "rowVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "contentVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "matchJobId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          }
+        },
+        "required": [
+          "id",
+          "rowVersion",
+          "contentVersion",
+          "matchJobId"
+        ]
+      },
+      "PostStateResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PostStatus"
+          },
+          "rowVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "contentVersion": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "rowVersion",
+          "contentVersion"
+        ]
+      },
+      "ClosePost": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "expectedVersion",
+          "reason"
+        ]
+      },
+      "ResolvePost": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "expectedVersion"
+        ]
+      },
+      "JobAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "state": {
+            "$ref": "#/components/schemas/JobState"
+          },
+          "runSeq": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "jobId",
+          "state",
+          "runSeq"
+        ]
+      },
+      "ExtractionRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "fileIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            },
+            "maxItems": 3
+          },
+          "clientTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "clientTime"
+        ],
+        "x-semantic-validation": [
+          "nonblank text OR one or more fileIds",
+          "only owned POST_IMAGE inputs",
+          "reference time sanity checked by server"
+        ]
+      },
+      "ExtractionResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "categoryId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "brand": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "nullable": true
+          },
+          "appearance": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "maxItems": 20
+          },
+          "suggestedDescription": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "needsConfirmation": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "categoryId",
+          "color",
+          "brand",
+          "appearance",
+          "suggestedDescription",
+          "locationId",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "needsConfirmation"
+        ]
+      },
+      "JobError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "ExtractionJob": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "state": {
+            "$ref": "#/components/schemas/JobState"
+          },
+          "runSeq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "nullable": true
+          },
+          "inputHash": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "result": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "categoryId": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$",
+                "example": "1001",
+                "nullable": true
+              },
+              "color": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "nullable": true
+              },
+              "brand": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128,
+                "nullable": true
+              },
+              "appearance": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "maxItems": 20
+              },
+              "suggestedDescription": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "nullable": true
+              },
+              "locationId": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$",
+                "example": "1001",
+                "nullable": true
+              },
+              "timePrecision": {
+                "type": "string",
+                "enum": [
+                  "EXACT",
+                  "PERIOD",
+                  "DATE",
+                  "UNKNOWN"
+                ]
+              },
+              "eventAt": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "eventDate": {
+                "type": "string",
+                "format": "date",
+                "nullable": true
+              },
+              "timePeriod": {
+                "type": "string",
+                "enum": [
+                  "MORNING",
+                  "AFTERNOON",
+                  "EVENING"
+                ],
+                "nullable": true
+              },
+              "needsConfirmation": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "categoryId",
+              "color",
+              "brand",
+              "appearance",
+              "suggestedDescription",
+              "locationId",
+              "timePrecision",
+              "eventAt",
+              "eventDate",
+              "timePeriod",
+              "needsConfirmation"
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "jobId",
+          "state",
+          "runSeq",
+          "error",
+          "inputHash",
+          "result"
+        ]
+      },
+      "MatchTaskResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sourceVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sourceRowVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "algorithmVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "RULE_BASED",
+              "HYBRID"
+            ]
+          },
+          "semanticStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "AVAILABLE",
+              "PARTIAL",
+              "UNAVAILABLE"
+            ]
+          }
+        },
+        "required": [
+          "sourceVersion",
+          "sourceRowVersion",
+          "algorithmVersion",
+          "mode",
+          "semanticStatus"
+        ]
+      },
+      "MatchJob": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "state": {
+            "$ref": "#/components/schemas/JobState"
+          },
+          "runSeq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ],
+            "nullable": true
+          },
+          "targetPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "result": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "sourceVersion": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sourceRowVersion": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "algorithmVersion": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "RULE_BASED",
+                  "HYBRID"
+                ]
+              },
+              "semanticStatus": {
+                "type": "string",
+                "enum": [
+                  "PENDING",
+                  "AVAILABLE",
+                  "PARTIAL",
+                  "UNAVAILABLE"
+                ]
+              }
+            },
+            "required": [
+              "sourceVersion",
+              "sourceRowVersion",
+              "algorithmVersion",
+              "mode",
+              "semanticStatus"
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "jobId",
+          "state",
+          "runSeq",
+          "error",
+          "targetPostId",
+          "result"
+        ]
+      },
+      "RefreshRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "clientRequestId"
+        ]
+      },
+      "MatchItem": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LOST",
+              "FOUND"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "categoryName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "locationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PostStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 10
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "RULE_BASED",
+              "HYBRID"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "categoryName",
+          "locationName",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "thumbnailUrl",
+          "status",
+          "createdAt",
+          "rank",
+          "reasons",
+          "mode"
+        ]
+      },
+      "Matches": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "refreshState": {
+            "$ref": "#/components/schemas/JobState"
+          },
+          "sourceVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "RULE_BASED",
+              "HYBRID"
+            ]
+          },
+          "semanticStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "AVAILABLE",
+              "PARTIAL",
+              "UNAVAILABLE"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MatchItem"
+            },
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "refreshState",
+          "sourceVersion",
+          "mode",
+          "semanticStatus",
+          "items"
+        ]
+      },
+      "ClueCreate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "sightingAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "imageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            },
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "content",
+          "sightingAt",
+          "locationId",
+          "imageIds"
+        ]
+      },
+      "Clue": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "lostPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "author": {
+            "$ref": "#/components/schemas/PublicUser"
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "sightingAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileRef"
+            },
+            "maxItems": 3
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "lostPostId",
+          "author",
+          "content",
+          "sightingAt",
+          "locationId",
+          "images",
+          "createdAt"
+        ]
+      },
+      "ClaimCreate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "relatedLostPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "proofText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "proofImageIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$",
+              "example": "1001"
+            },
+            "maxItems": 3
+          },
+          "applicantContact": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "expectedFoundContentVersion": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "relatedLostPostId",
+          "proofText",
+          "proofImageIds",
+          "applicantContact",
+          "expectedFoundContentVersion"
+        ]
+      },
+      "ClaimAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "reason"
+        ]
+      },
+      "ClaimAccept": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "finderContact": {
+            "$ref": "#/components/schemas/Contact"
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "finderContact"
+        ]
+      },
+      "ClaimComplete": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "clientRequestId"
+        ]
+      },
+      "ClaimCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "foundPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "relatedLostPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "postTitle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "status": {
+            "$ref": "#/components/schemas/ClaimStatus"
+          },
+          "endReason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ACCEPT",
+                "REJECT",
+                "CANCEL",
+                "COMPLETE"
+              ]
+            },
+            "maxItems": 4
+          },
+          "stale": {
+            "type": "boolean",
+            "description": "内容版本是否过时；过时申请只能撤销/拒绝，不能接受"
+          }
+        },
+        "required": [
+          "id",
+          "foundPostId",
+          "relatedLostPostId",
+          "postTitle",
+          "status",
+          "endReason",
+          "acceptedAt",
+          "completedAt",
+          "createdAt",
+          "allowedActions",
+          "stale"
+        ]
+      },
+      "ClaimDetail": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "foundPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "relatedLostPostId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "postTitle": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "status": {
+            "$ref": "#/components/schemas/ClaimStatus"
+          },
+          "endReason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "completedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ACCEPT",
+                "REJECT",
+                "CANCEL",
+                "COMPLETE"
+              ]
+            },
+            "maxItems": 4
+          },
+          "proofText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "proofImages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileRef"
+            },
+            "maxItems": 3
+          },
+          "applicantContact": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "WECHAT",
+                  "PHONE"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "type",
+              "value"
+            ],
+            "nullable": true
+          },
+          "finderContact": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "WECHAT",
+                  "PHONE"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "type",
+              "value"
+            ],
+            "nullable": true
+          },
+          "cancelledById": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "cancelReason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "nullable": true
+          },
+          "applicant": {
+            "$ref": "#/components/schemas/PublicUser"
+          },
+          "finder": {
+            "$ref": "#/components/schemas/PublicUser"
+          },
+          "stale": {
+            "type": "boolean",
+            "description": "内容版本是否过时；过时申请只能撤销/拒绝，不能接受"
+          }
+        },
+        "required": [
+          "id",
+          "foundPostId",
+          "relatedLostPostId",
+          "postTitle",
+          "status",
+          "endReason",
+          "acceptedAt",
+          "completedAt",
+          "createdAt",
+          "allowedActions",
+          "proofText",
+          "proofImages",
+          "applicantContact",
+          "finderContact",
+          "cancelledById",
+          "cancelReason",
+          "applicant",
+          "finder",
+          "stale"
+        ]
+      },
+      "Notification": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "businessId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "readAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "businessId",
+          "title",
+          "message",
+          "readAt",
+          "createdAt"
+        ]
+      },
+      "UnreadCount": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "count"
+        ]
+      },
+      "Ack": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "enum": [
+              true
+            ]
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "ReportCreate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "postId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "reasonCode": {
+            "type": "string",
+            "enum": [
+              "FALSE_INFORMATION",
+              "INAPPROPRIATE_CONTENT",
+              "PRIVACY",
+              "OTHER"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "postId",
+          "reasonCode",
+          "description"
+        ]
+      },
+      "Report": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "postId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "reasonCode": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "RESOLVED",
+              "DISMISSED"
+            ]
+          },
+          "resolution": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "postId",
+          "reasonCode",
+          "description",
+          "status",
+          "resolution",
+          "createdAt"
+        ]
+      },
+      "ReportResolve": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "RESOLVED",
+              "DISMISSED"
+            ]
+          },
+          "resolution": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "status",
+          "resolution"
+        ]
+      },
+      "ModerationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "moderationStatus": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "HIDDEN"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "expectedVersion",
+          "moderationStatus",
+          "reason"
+        ]
+      },
+      "UserStatus": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "clientRequestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "RESTRICTED"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "clientRequestId",
+          "status",
+          "reason"
+        ]
+      },
+      "AdminPost": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LOST",
+              "FOUND"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "categoryName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "locationName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "nullable": true
+          },
+          "timePrecision": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "PERIOD",
+              "DATE",
+              "UNKNOWN"
+            ]
+          },
+          "eventAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "timePeriod": {
+            "type": "string",
+            "enum": [
+              "MORNING",
+              "AFTERNOON",
+              "EVENING"
+            ],
+            "nullable": true
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/PostStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categoryId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "locationId": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "features": {
+            "$ref": "#/components/schemas/Features"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostImage"
+            },
+            "maxItems": 3
+          },
+          "rowVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "contentVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "publisher": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$",
+                "example": "1001"
+              },
+              "nickname": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "avatarUrl": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000,
+                "nullable": true
+              }
+            },
+            "required": [
+              "id",
+              "nickname",
+              "avatarUrl"
+            ]
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "EDIT",
+                "CLOSE",
+                "RESOLVE",
+                "PROVIDE_CLUE",
+                "CLAIM",
+                "REPORT",
+                "VIEW_MATCHES"
+              ]
+            },
+            "maxItems": 10
+          },
+          "moderationStatus": {
+            "type": "string",
+            "enum": [
+              "VISIBLE",
+              "HIDDEN"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title",
+          "categoryName",
+          "locationName",
+          "timePrecision",
+          "eventAt",
+          "eventDate",
+          "timePeriod",
+          "thumbnailUrl",
+          "status",
+          "createdAt",
+          "categoryId",
+          "locationId",
+          "description",
+          "features",
+          "images",
+          "rowVersion",
+          "contentVersion",
+          "publisher",
+          "allowedActions",
+          "moderationStatus"
+        ]
+      },
+      "Statistics": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "totalPosts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "openFound": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resolvedFound": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resolvedLost": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "totalPosts",
+          "openFound",
+          "resolvedFound",
+          "resolvedLost"
+        ]
+      },
+      "CreatedId": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "ApiError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "data": {
+            "type": "object",
+            "nullable": true
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "LoginResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Login"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "AckResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Ack"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "UserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/User"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "DictionaryItemPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DictionaryItem"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "DictionaryItemPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DictionaryItemPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "FileUploadedResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FileUploaded"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "FileGrantResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/FileGrant"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PostSavedResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PostSaved"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PostCardPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostCard"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "PostCardPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PostCardPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PostDetailResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PostDetail"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PostDetailPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostDetail"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "PostDetailPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PostDetailPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PostStateResultResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PostStateResult"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "JobAcceptedResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/JobAccepted"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ExtractionJobResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ExtractionJob"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "MatchJobResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MatchJob"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "MatchesResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Matches"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "CreatedIdResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CreatedId"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "CluePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Clue"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "CluePageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CluePage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ClaimCardResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ClaimCard"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ClaimCardPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimCard"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "ClaimCardPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ClaimCardPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ClaimDetailResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ClaimDetail"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "NotificationPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "NotificationPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/NotificationPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "UnreadCountResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UnreadCount"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "AdminPostPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminPost"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "AdminPostPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AdminPostPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "AdminPostResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AdminPost"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "UserPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "UserPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ReportPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Report"
+            },
+            "maxItems": 50
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "pageSize"
+        ]
+      },
+      "ReportPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ReportPage"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "ReportResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Report"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "StatisticsResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Statistics"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "DictionaryItemResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DictionaryItem"
+          },
+          "requestId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "data",
+          "requestId"
+        ]
+      },
+      "PublicUser": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "example": "1001"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "avatarUrl": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "nickname",
+          "avatarUrl"
+        ]
+      },
+      "CategoryWrite": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "name",
+          "enabled"
+        ]
+      },
+      "CategoryPatch": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [],
+        "minProperties": 1
+      }
+    }
+  }
+}

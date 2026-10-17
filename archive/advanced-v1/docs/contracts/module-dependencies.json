@@ -1,0 +1,324 @@
+{
+  "version": "1.1.0",
+  "scope": "Design-only service dependency graph; not compiled application verification",
+  "services": {
+    "PostCommandService": {
+      "owner": "B",
+      "depends": [
+        "CurrentUser",
+        "IdempotencyService",
+        "AssetService",
+        "PostRepository",
+        "JobService"
+      ],
+      "description": ""
+    },
+    "RecoveryWorkflowService": {
+      "owner": "B",
+      "depends": [
+        "CurrentUser",
+        "IdempotencyService",
+        "AssetService",
+        "PostStateService",
+        "PostRepository",
+        "ClaimRepository",
+        "NotificationService",
+        "JobService"
+      ],
+      "description": ""
+    },
+    "PostStateService": {
+      "owner": "B",
+      "depends": [
+        "PostRepository"
+      ],
+      "description": ""
+    },
+    "PostQueryService": {
+      "owner": "B",
+      "depends": [
+        "PostRepository"
+      ],
+      "description": "No image decoration, AssetService, or job dependency"
+    },
+    "PostMatchGuard": {
+      "owner": "B",
+      "depends": [
+        "PostRepository"
+      ],
+      "description": "MANDATORY transaction, sorted locking projections; no writes or outbound calls"
+    },
+    "BusinessFileAccessPolicy": {
+      "owner": "B",
+      "depends": [
+        "PostRepository",
+        "ClaimRepository",
+        "ClueRepository"
+      ],
+      "description": "Queries only, no AssetService callback"
+    },
+    "NotificationService": {
+      "owner": "B",
+      "depends": [
+        "NotificationRepository"
+      ],
+      "description": ""
+    },
+    "AdminBusinessQuery": {
+      "owner": "B",
+      "depends": [
+        "PostRepository",
+        "ClaimRepository"
+      ],
+      "description": "Admin summaries only; no proof or contact payload"
+    },
+    "PostRepository": {
+      "owner": "B",
+      "depends": [],
+      "description": ""
+    },
+    "ClaimRepository": {
+      "owner": "B",
+      "depends": [],
+      "description": ""
+    },
+    "ClueRepository": {
+      "owner": "B",
+      "depends": [],
+      "description": ""
+    },
+    "NotificationRepository": {
+      "owner": "B",
+      "depends": [],
+      "description": ""
+    },
+    "AiExtractionService": {
+      "owner": "C",
+      "depends": [
+        "CurrentUser",
+        "AssetService",
+        "JobService"
+      ],
+      "description": ""
+    },
+    "JobService": {
+      "owner": "C",
+      "depends": [
+        "JobRepository"
+      ],
+      "description": "Enqueue only, participates in transaction; never depends on handlers"
+    },
+    "JobScheduler": {
+      "owner": "C",
+      "depends": [
+        "JobRepository",
+        "ExtractFeaturesHandler",
+        "RefreshMatchesHandler"
+      ],
+      "description": "Releases task claim transaction before invoking handler"
+    },
+    "ExtractFeaturesHandler": {
+      "owner": "C",
+      "depends": [
+        "AssetService",
+        "FeatureGateway",
+        "JobRepository",
+        "AiDraftRepository",
+        "DictionaryQuery"
+      ],
+      "description": ""
+    },
+    "RefreshMatchesHandler": {
+      "owner": "C",
+      "depends": [
+        "PostQueryService",
+        "EmbeddingGateway",
+        "MatchingPolicy",
+        "MatchRepository",
+        "MatchCommitService"
+      ],
+      "description": ""
+    },
+    "MatchCommitService": {
+      "owner": "C",
+      "depends": [
+        "PostMatchGuard",
+        "JobRepository",
+        "MatchRepository",
+        "NotificationService"
+      ],
+      "description": ""
+    },
+    "MatchingPolicy": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "FeatureGateway": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "EmbeddingGateway": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "JobRepository": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "AiDraftRepository": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "MatchRepository": {
+      "owner": "C",
+      "depends": [],
+      "description": ""
+    },
+    "CurrentUser": {
+      "owner": "D",
+      "depends": [
+        "SessionRepository",
+        "UserRepository"
+      ],
+      "description": ""
+    },
+    "IdentityService": {
+      "owner": "D",
+      "depends": [
+        "SessionRepository",
+        "UserRepository",
+        "WechatGateway"
+      ],
+      "description": ""
+    },
+    "AssetService": {
+      "owner": "D",
+      "depends": [
+        "UserAvailability",
+        "AssetRepository",
+        "StorageGateway",
+        "BusinessFileAccessPolicy"
+      ],
+      "description": ""
+    },
+    "ModerationService": {
+      "owner": "D",
+      "depends": [
+        "CurrentUser",
+        "IdempotencyService",
+        "RecoveryWorkflowService",
+        "AdminRepository"
+      ],
+      "description": ""
+    },
+    "AdminQueryFacade": {
+      "owner": "D",
+      "depends": [
+        "CurrentUser",
+        "AdminBusinessQuery",
+        "AdminRepository",
+        "AssetService"
+      ],
+      "description": ""
+    },
+    "IdempotencyService": {
+      "owner": "D",
+      "depends": [
+        "IdempotencyRepository"
+      ],
+      "description": ""
+    },
+    "SessionRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "UserRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "WechatGateway": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "AssetRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "StorageGateway": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "AdminRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "IdempotencyRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "UserAvailability": {
+      "owner": "D",
+      "depends": [
+        "UserRepository"
+      ],
+      "description": "Explicit actor/user check; no HTTP thread context required"
+    },
+    "DictionaryRepository": {
+      "owner": "D",
+      "depends": [],
+      "description": ""
+    },
+    "DictionaryQuery": {
+      "owner": "D",
+      "depends": [
+        "DictionaryRepository"
+      ],
+      "description": "Read-only dictionary validation for AI outputs"
+    }
+  },
+  "directoryOwners": {
+    "miniprogram/": "A",
+    "backend/src/main/java/com/campus/lostfound/modules/business/": "B",
+    "backend/src/main/java/com/campus/lostfound/modules/intelligence/": "C",
+    "backend/src/main/java/com/campus/lostfound/modules/platform/": "D",
+    "backend/src/main/java/com/campus/lostfound/common/": "D",
+    "admin-web/": "D",
+    "deploy/": "D"
+  },
+  "tableOwners": {
+    "post": "B",
+    "post_feature": "B",
+    "post_asset": "B",
+    "clue": "B",
+    "clue_asset": "B",
+    "claim": "B",
+    "claim_asset": "B",
+    "notification": "B",
+    "ai_draft": "C",
+    "post_embedding": "C",
+    "match_result": "C",
+    "ai_call_log": "C",
+    "job": "C",
+    "app_user": "D",
+    "auth_session": "D",
+    "admin_credential": "D",
+    "category": "D",
+    "campus_location": "D",
+    "file_asset": "D",
+    "idempotency_record": "D",
+    "report": "D",
+    "admin_operation_log": "D"
+  }
+}
